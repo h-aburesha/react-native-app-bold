@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "..", "client", "public")));
 
 app.get("/", (req, res) => {
-    res.send("<h1>Hello from the server sideee</h1>");
+    res.json({ message: "Hello World from THE BACKEND" });
 });
 
 app.listen(PORT, function () {
