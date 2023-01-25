@@ -28,7 +28,7 @@ export default function Main() {
                 resizeMode="cover"
                 style={styles.image}
             >
-                <Text style={styles.text}>Welcome to B.</Text>
+                <Text style={styles.text}>Fitness App</Text>
             </ImageBackground>
         </View>
     );
