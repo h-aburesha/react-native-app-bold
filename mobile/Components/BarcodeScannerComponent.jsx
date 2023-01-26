@@ -8,21 +8,24 @@ const BarcodeScannerComponent = ({
     setIsCameraOpen,
 }) => {
     console.log(handleBarCodeScanned, isCameraOpen, setIsCameraOpen);
+
     return (
-        <View>
+        <>
             {isCameraOpen ? (
-                <BarCodeScanner
-                    onBarCodeScanned={handleBarCodeScanned}
-                    style={{ flex: 1 }}
-                />
+                <>
+                    <BarCodeScanner
+                        onBarCodeScanned={handleBarCodeScanned}
+                        style={{ flex: 1 }}
+                    />
+                    <TouchableOpacity
+                        onPress={() => setIsCameraOpen(false)}
+                        style={styles.closeButton}
+                    >
+                        <Text style={styles.closeButtonText}>Close</Text>
+                    </TouchableOpacity>
+                </>
             ) : null}
-            <TouchableOpacity
-                onPress={() => setIsCameraOpen(!isCameraOpen)}
-                style={styles.closeButton}
-            >
-                <Text style={styles.closeButtonText}>Close</Text>
-            </TouchableOpacity>
-        </View>
+        </>
     );
 };
 

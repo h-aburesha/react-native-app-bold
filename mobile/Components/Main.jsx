@@ -3,7 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, ImageBackground, Button } from "react-native";
 import { useState, useEffect } from "react";
 import CustomButton from "./CustomButton";
-import BarcodeScannerComponent from "./BarcodeScanner";
+import BarcodeScannerComponent from "./BarcodeScannerComponent";
 
 export default function Main() {
     const image = {
