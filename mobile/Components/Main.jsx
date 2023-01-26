@@ -1,45 +1,42 @@
 import { StatusBar } from "expo-status-bar";
-import {
-    StyleSheet,
-    Text,
-    View,
-    Image,
-    ImageBackground,
-    Button,
-} from "react-native";
+
+import { StyleSheet, Text, View, ImageBackground, Button } from "react-native";
 import { useState, useEffect } from "react";
 import CustomButton from "./CustomButton";
+import BarcodeScannerComponent from "./BarcodeScanner";
 
 export default function Main() {
-    const [dogImage, setDogImage] = useState(null);
-
-    useEffect(() => {
-        (async () => {
-            const response = await fetch(
-                `https://dog.ceo/api/breeds/image/random`
-            );
-            const data = await response.json();
-            setDogImage(data.message);
-
-            console.log("Data from App:", data);
-        })();
-    }, []);
-
     const image = {
-        uri: "https://s3.amazonaws.com/spicedling/TDDjaWLk1wRxnDTBkUH9Y-9TAstJrKGA.png",
+        uri: "https://s3.amazonaws.com/spicedling/sR27vECAj414KOsimdlehadjFCqzUs4p.png",
+    };
+
+    const [isCameraOpen, setIsCameraOpen] = useState(false);
+
+    const handleBarCodeScanned = (data) => {
+        console.log(data);
+    };
+
+    const toggleCamera = () => {
+        setIsCameraOpen(!isCameraOpen);
     };
 
     return (
         <View style={styles.container}>
+            <StatusBar style="auto" />
+            <BarcodeScannerComponent
+                isCameraOpen={isCameraOpen}
+                setIsCameraOpen={setIsCameraOpen}
+                handleBarCodeScanned={handleBarCodeScanned}
+            />
             <ImageBackground
                 source={image}
                 resizeMode="cover"
                 style={styles.image}
             >
-                <Text style={styles.text}>Fitness App</Text>
+                <Text style={styles.text}>Bold.</Text>
 
                 <View style={styles.button}>
-                    <Button title="Press Me!" />
+                    <Button title="Scan Code!" onPress={toggleCamera} />
                 </View>
             </ImageBackground>
         </View>
@@ -60,6 +57,7 @@ const styles = StyleSheet.create({
         lineHeight: 84,
         fontWeight: "bold",
         textAlign: "center",
+        marginTop: 200,
     },
     tinyLogo: {
         width: 50,
@@ -73,6 +71,32 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         elevation: 3,
         backgroundColor: "black",
-        fontSize: 16,
+        marginTop: 100,
     },
 });
+
+/* 
+
+    marginRight: 100,
+        marginLeft: 100,
+        marginTop: 100,
+
+
+
+
+           const [dogImage, setDogImage] = useState(null);
+
+    useEffect(() => {
+        (async () => {
+            const response = await fetch(
+                `https://dog.ceo/api/breeds/image/random`
+            );
+            const data = await response.json();
+            setDogImage(data.message);
+
+            console.log("Data from App:", data);
+        })();
+    }, []);
+
+    
+*/
