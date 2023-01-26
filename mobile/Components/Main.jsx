@@ -1,6 +1,14 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Image, ImageBackground } from "react-native";
+import {
+    StyleSheet,
+    Text,
+    View,
+    Image,
+    ImageBackground,
+    Button,
+} from "react-native";
 import { useState, useEffect } from "react";
+import CustomButton from "./CustomButton";
 
 export default function Main() {
     const [dogImage, setDogImage] = useState(null);
@@ -18,7 +26,7 @@ export default function Main() {
     }, []);
 
     const image = {
-        uri: "/Users/h.aburesha/react-native-app-FP/mobile/assets/paprika.png",
+        uri: "https://s3.amazonaws.com/spicedling/TDDjaWLk1wRxnDTBkUH9Y-9TAstJrKGA.png",
     };
 
     return (
@@ -29,6 +37,10 @@ export default function Main() {
                 style={styles.image}
             >
                 <Text style={styles.text}>Fitness App</Text>
+
+                <View style={styles.button}>
+                    <Button title="Press Me!" />
+                </View>
             </ImageBackground>
         </View>
     );
@@ -48,10 +60,19 @@ const styles = StyleSheet.create({
         lineHeight: 84,
         fontWeight: "bold",
         textAlign: "center",
-        backgroundColor: "#000000c0",
     },
     tinyLogo: {
         width: 50,
         height: 50,
+    },
+    button: {
+        alignItems: "center",
+        justifyContent: "center",
+        paddingVertical: 12,
+        paddingHorizontal: 12,
+        borderRadius: 4,
+        elevation: 3,
+        backgroundColor: "black",
+        fontSize: 16,
     },
 });
