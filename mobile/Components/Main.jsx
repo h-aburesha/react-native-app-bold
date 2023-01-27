@@ -11,20 +11,28 @@ export default function Main() {
     };
 
     const [isCameraOpen, setIsCameraOpen] = useState(false);
+    const [scanned, setScanned] = useState(false);
 
-    const handleBarCodeScanned = (data) => {
+    const handleBarCodeScanned = ({ type, data }) => {
+        setScanned(true);
+        alert(`Bar code with type ${type} and data ${data} has been scanned!`);
         console.log(data);
     };
 
     const toggleCamera = () => {
-        setIsCameraOpen(!isCameraOpen);
+        if (!scanned) {
+            setIsCameraOpen(!isCameraOpen);
+        } else {
+            setScanned(false);
+            setIsCameraOpen(!isCameraOpen);
+        }
     };
 
     return (
         <View style={styles.container}>
             <StatusBar style="auto" />
             <BarcodeScannerComponent
-                isCameraOpen={isCameraOpen}
+                isCameraOpen={isCameraOpen && !scanned}
                 setIsCameraOpen={setIsCameraOpen}
                 handleBarCodeScanned={handleBarCodeScanned}
             />
