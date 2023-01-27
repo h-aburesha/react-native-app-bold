@@ -1,4 +1,5 @@
 import { StatusBar } from "expo-status-bar";
+import { Dimensions } from "react-native";
 
 import { StyleSheet, Text, View, ImageBackground, Button } from "react-native";
 import { useState, useEffect } from "react";
@@ -12,10 +13,13 @@ export default function Main() {
 
     const [isCameraOpen, setIsCameraOpen] = useState(false);
     const [scanned, setScanned] = useState(false);
+    const [text, setText] = useState("null");
 
     const handleBarCodeScanned = ({ type, data }) => {
         setScanned(true);
-        alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+        alert(
+            `Bar code with type ${type} and Serial Code: ${data} has been scanned!`
+        );
         console.log(data);
     };
 
@@ -28,26 +32,42 @@ export default function Main() {
         }
     };
 
-    return (
-        <View style={styles.container}>
-            <StatusBar style="auto" />
-            <BarcodeScannerComponent
-                isCameraOpen={isCameraOpen && !scanned}
-                setIsCameraOpen={setIsCameraOpen}
-                handleBarCodeScanned={handleBarCodeScanned}
-            />
-            <ImageBackground
-                source={image}
-                resizeMode="cover"
-                style={styles.image}
-            >
-                <Text style={styles.text}>Bold.</Text>
+    useEffect(() => {
+        (async () => {
+            try {
+                const response = await fetch(`http://localhost:5001/data`);
+                const data = await response.json();
+                setText(data.data.key);
+                console.log("Data from App after JSON:", data.data.key);
+            } catch (error) {
+                console.log("Error in Main.jsx:", error);
+            }
+        })();
+    }, []);
 
-                <View style={styles.button}>
-                    <Button title="Scan Code!" onPress={toggleCamera} />
-                </View>
-            </ImageBackground>
-        </View>
+    return (
+        <>
+            <View style={styles.container}>
+                <StatusBar style="auto" />
+                <BarcodeScannerComponent
+                    style={styles.camera}
+                    isCameraOpen={isCameraOpen && !scanned}
+                    setIsCameraOpen={setIsCameraOpen}
+                    handleBarCodeScanned={handleBarCodeScanned}
+                />
+                <ImageBackground
+                    source={image}
+                    resizeMode="cover"
+                    style={styles.image}
+                >
+                    <Text style={styles.text}>{text}Bold!</Text>
+
+                    <View style={styles.button}>
+                        <Button title="Scan Code!" onPress={toggleCamera} />
+                    </View>
+                </ImageBackground>
+            </View>
+        </>
     );
 }
 
@@ -80,6 +100,11 @@ const styles = StyleSheet.create({
         elevation: 3,
         backgroundColor: "black",
         marginTop: 100,
+    },
+    camera: {
+        flex: 1,
+        width: Dimensions.get("window").width,
+        height: Dimensions.get("window").height,
     },
 });
 

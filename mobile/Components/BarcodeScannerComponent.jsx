@@ -7,7 +7,7 @@ const BarcodeScannerComponent = ({
     isCameraOpen,
     setIsCameraOpen,
 }) => {
-    console.log(handleBarCodeScanned, isCameraOpen, setIsCameraOpen);
+    // console.log(handleBarCodeScanned, isCameraOpen, setIsCameraOpen);
 
     return (
         <>
