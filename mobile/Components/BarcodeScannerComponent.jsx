@@ -15,7 +15,7 @@ const BarcodeScannerComponent = ({
                 <>
                     <BarCodeScanner
                         onBarCodeScanned={handleBarCodeScanned}
-                        style={{ flex: 1 }}
+                        style={[StyleSheet.absoluteFillObject, { zIndex: 1 }]}
                     />
                     <TouchableOpacity
                         onPress={() => setIsCameraOpen(false)}
@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
         backgroundColor: "rgba(255, 255, 255, 0.3)",
         padding: 10,
         borderRadius: 5,
+        zIndex: 1,
     },
     closeButtonText: {
         color: "white",
