@@ -133,29 +133,3 @@ const styles = StyleSheet.create({
         alignSelf: "center",
     },
 });
-
-/* 
-
-    marginRight: 100,
-        marginLeft: 100,
-        marginTop: 100,
-
-
-
-
-           const [dogImage, setDogImage] = useState(null);
-
-    useEffect(() => {
-        (async () => {
-            const response = await fetch(
-                `https://dog.ceo/api/breeds/image/random`
-            );
-            const data = await response.json();
-            setDogImage(data.message);
-
-            console.log("Data from App:", data);
-        })();
-    }, []);
-
-    
-*/
