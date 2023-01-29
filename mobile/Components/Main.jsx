@@ -13,6 +13,7 @@ import {
 import { useState, useEffect } from "react";
 
 import BarcodeScannerComponent from "./BarcodeScannerComponent";
+import HoverMenu from "./HoverMenu";
 
 export default function Main() {
     const navigation = useNavigation();
@@ -59,6 +60,7 @@ export default function Main() {
         <>
             <View style={styles.container}>
                 <StatusBar style="auto" />
+                <HoverMenu />
                 <ImageBackground
                     source={backgroundImage}
                     resizeMode="cover"
