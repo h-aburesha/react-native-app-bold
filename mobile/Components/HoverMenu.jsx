@@ -1,12 +1,20 @@
 import { useState } from "react";
-import { View, StyleSheet, TouchableOpacity, Modal, Text } from "react-native";
+import {
+    View,
+    StyleSheet,
+    TouchableOpacity,
+    Modal,
+    Text,
+    SafeAreaView,
+} from "react-native";
 import { AntDesign } from "@expo/vector-icons";
+import TodoList from "./TodoList";
 
 const HoverMenu = () => {
     const [modalVisible, setModalVisible] = useState(false);
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <TouchableOpacity
                 style={styles.menu}
                 onPress={() => setModalVisible(true)}
@@ -26,19 +34,18 @@ const HoverMenu = () => {
                         <AntDesign name="close" size={24} color="white" />
                     </TouchableOpacity>
                     <View style={styles.modalContent}>
-                        {/* Replace with desired content */}
-                        <Text>Modal Content</Text>
+                        <TodoList />
                     </View>
                 </View>
             </Modal>
-        </View>
+        </SafeAreaView>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
         position: "absolute",
-        top: 20,
+        top: 30,
         left: 20,
         zIndex: 1,
     },
@@ -70,9 +77,14 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     modalContent: {
-        backgroundColor: "white",
-        padding: 20,
-        borderRadius: 10,
+        backgroundColor: "grey",
+
+        width: "100%",
+
+        borderColor: "white",
+
+        padding: 4,
+        borderRadius: 8,
     },
 });
 
