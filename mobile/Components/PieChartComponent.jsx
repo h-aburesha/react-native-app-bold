@@ -27,7 +27,7 @@ const MyPieChart = () => {
                 </View>
                 <Button
                     title="Checkout New Recepies!"
-                    onPress={() => navigation.navigate("Modal")}
+                    onPress={() => navigation.navigate("Recepies-Modal")}
                 />
             </SafeAreaView>
         </>

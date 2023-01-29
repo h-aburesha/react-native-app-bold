@@ -3,7 +3,7 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Main from "./Components/Main";
 import MyPieChart from "./Components/PieChartComponent";
-import Modal from "./Components/Modal";
+import RecepiesModal from "./Components/RecepiesModal";
 
 const Stack = createNativeStackNavigator();
 
@@ -15,7 +15,7 @@ const StackNavigator = () => {
                 <Stack.Screen name="PieChart" component={MyPieChart} />
             </Stack.Group>
             <Stack.Group screenOptions={{ presentation: "modal" }}>
-                <Stack.Screen name="Modal" component={Modal} />
+                <Stack.Screen name="Recepies-Modal" component={RecepiesModal} />
             </Stack.Group>
         </Stack.Navigator>
     );

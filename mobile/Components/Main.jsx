@@ -74,11 +74,12 @@ export default function Main() {
 
                     <View style={styles.button}>
                         <Button title="Scan Code!" onPress={toggleCamera} />
+                        <View style={styles.separator} />
+                        <Button
+                            title="Macronutrients"
+                            onPress={() => navigation.navigate("PieChart")}
+                        />
                     </View>
-                    <Button
-                        title="Macronutrients"
-                        onPress={() => navigation.navigate("PieChart")}
-                    />
                 </ImageBackground>
             </View>
         </>
@@ -107,7 +108,7 @@ const styles = StyleSheet.create({
         lineHeight: 84,
         fontWeight: "bold",
         textAlign: "center",
-        marginTop: 200,
+        marginTop: 250,
     },
 
     button: {
@@ -121,6 +122,13 @@ const styles = StyleSheet.create({
         marginTop: 100,
         marginRight: 50,
         marginLeft: 50,
+    },
+    separator: {
+        marginVertical: 8,
+        borderBottomColor: "white",
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        width: "80%",
+        alignSelf: "center",
     },
 });
 
