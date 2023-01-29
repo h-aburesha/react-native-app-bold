@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { Dimensions } from "react-native";
+import { Dimensions, ScrollViewComponent } from "react-native";
 
 import {
     StyleSheet,
@@ -82,9 +82,17 @@ export default function Main() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: "transparent",
+        position: "absolute",
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
     },
     image: {
         flex: 1,
+        resizeMode: "cover",
+
         justifyContent: "center",
     },
     text: {
@@ -95,10 +103,7 @@ const styles = StyleSheet.create({
         textAlign: "center",
         marginTop: 200,
     },
-    tinyLogo: {
-        width: 50,
-        height: 50,
-    },
+
     button: {
         alignItems: "center",
         justifyContent: "center",

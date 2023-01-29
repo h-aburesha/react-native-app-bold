@@ -11,34 +11,19 @@ import {
 const MyPieChart = () => {
     return (
         <>
-            <View style={styles.container}>
-                <Text style={styles.header}>Macronutrients</Text>
-                <PieChart
-                    data={[
-                        {
-                            key: "First Data",
-                            count: 20,
-                            color: "blue",
-                        },
-                        {
-                            key: "Second Data",
-                            count: 25,
-                            color: "yellow",
-                        },
-                        {
-                            key: "Third Data",
-                            count: 40,
-                            color: "green",
-                        },
-                        {
-                            key: "Forth Data",
-                            count: 35,
-                            color: "orange",
-                        },
-                    ]}
-                    length={200}
-                />
-            </View>
+            <SafeAreaView>
+                <View style={styles.container}>
+                    <Text style={styles.header}>Macronutrients</Text>
+                    <PieChart data={nutritionData} length={200} />
+                    <View style={styles.dataContainer}>
+                        {nutritionData.map((item, index) => (
+                            <Text key={index} style={styles.dataText}>
+                                {item.key}: {item.count} grams
+                            </Text>
+                        ))}
+                    </View>
+                </View>
+            </SafeAreaView>
         </>
     );
 };
@@ -58,4 +43,30 @@ const styles = StyleSheet.create({
         alignItems: "center",
         marginTop: 50,
     },
+    dataContainer: {
+        marginTop: 16,
+    },
+    dataText: {
+        textAlign: "center",
+        fontSize: 14,
+        padding: 8,
+    },
 });
+
+const nutritionData = [
+    {
+        key: "Carbs",
+        count: 25,
+        color: "blue",
+    },
+    {
+        key: "Fats",
+        count: 25,
+        color: "yellow",
+    },
+    {
+        key: "Protein",
+        count: 50,
+        color: "green",
+    },
+];
