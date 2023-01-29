@@ -9,7 +9,6 @@ export default function App() {
         <Provider store={store}>
             <NavigationContainer>
                 <StackNavigator />
-                <Main />
             </NavigationContainer>
         </Provider>
     );

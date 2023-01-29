@@ -1,5 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { Dimensions, ScrollViewComponent } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import {
     StyleSheet,
@@ -10,12 +11,13 @@ import {
     ScrollView,
 } from "react-native";
 import { useState, useEffect } from "react";
-import CustomButton from "./CustomButton";
+
 import BarcodeScannerComponent from "./BarcodeScannerComponent";
-import MyPieChart from "./PieChartComponent";
 
 export default function Main() {
-    const image = {
+    const navigation = useNavigation();
+
+    const backgroundImage = {
         uri: "https://s3.amazonaws.com/spicedling/sR27vECAj414KOsimdlehadjFCqzUs4p.png",
     };
 
@@ -58,7 +60,7 @@ export default function Main() {
             <View style={styles.container}>
                 <StatusBar style="auto" />
                 <ImageBackground
-                    source={image}
+                    source={backgroundImage}
                     resizeMode="cover"
                     style={styles.image}
                 >
@@ -68,11 +70,15 @@ export default function Main() {
                         handleBarCodeScanned={handleBarCodeScanned}
                     />
 
-                    <Text style={styles.text}>Bold!</Text>
+                    <Text style={styles.text}>Bold.</Text>
 
                     <View style={styles.button}>
                         <Button title="Scan Code!" onPress={toggleCamera} />
                     </View>
+                    <Button
+                        title="Macronutrients"
+                        onPress={() => navigation.navigate("PieChart")}
+                    />
                 </ImageBackground>
             </View>
         </>
