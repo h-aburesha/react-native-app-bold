@@ -11,7 +11,7 @@ const StackNavigator = () => {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Group>
-                <Stack.Screen name="Home" component={Main} />
+                <Stack.Screen name="Main" component={Main} />
                 <Stack.Screen name="PieChart" component={MyPieChart} />
             </Stack.Group>
             <Stack.Group screenOptions={{ presentation: "modal" }}>
