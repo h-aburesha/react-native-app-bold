@@ -14,11 +14,10 @@ const MyDrawer = () => {
             screenOptions={{ headerShown: false }}
             drawerPosition="right"
         >
-            <Drawer.Screen name="Menu" component={StackNavigator} />
+            <Drawer.Screen name="Home Page" component={StackNavigator} />
             <Drawer.Screen name="Main" component={Main} />
-            <Drawer.Screen name="Macronutrients" component={MyPieChart} />
             <Drawer.Screen name="Profile" component={UserProfile} />
-            <Drawer.Screen name="Todo" component={TodoList} />
+            <Drawer.Screen name="Macronutrients" component={MyPieChart} />
         </Drawer.Navigator>
     );
 };
