@@ -40,7 +40,9 @@ const UserProfile = () => {
                     styles.profilePicture,
                     { borderColor: isDarkMode ? "#fff" : "#333" },
                 ]}
-                source={{ uri: "https://picsum.photos/200" }}
+                source={{
+                    uri: "https://s3.amazonaws.com/spicedling/mNrCqHzefLSnO7UAroEignRdeo7s_AMc.jpeg",
+                }}
             />
             <Text
                 style={[
