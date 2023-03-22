@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
@@ -9,9 +9,18 @@ const BarcodeScannerComponent = ({
 }) => {
     // console.log(handleBarCodeScanned, isCameraOpen, setIsCameraOpen);
 
+    const [hasPermission, setHasPermission] = useState(null);
+
+    useEffect(() => {
+        (async () => {
+            const { status } = await BarCodeScanner.requestPermissionsAsync();
+            setHasPermission(status === "granted");
+        })();
+    }, []);
+
     return (
         <>
-            {isCameraOpen ? (
+            {hasPermission && isCameraOpen ? (
                 <>
                     <BarCodeScanner
                         onBarCodeScanned={handleBarCodeScanned}
