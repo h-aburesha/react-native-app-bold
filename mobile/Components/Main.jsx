@@ -1,5 +1,4 @@
 import { StatusBar } from "expo-status-bar";
-import { Dimensions, ScrollViewComponent } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import {
