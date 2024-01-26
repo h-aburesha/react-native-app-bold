@@ -4,7 +4,6 @@ import {
     StyleSheet,
     TouchableOpacity,
     Modal,
-    Text,
     SafeAreaView,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
