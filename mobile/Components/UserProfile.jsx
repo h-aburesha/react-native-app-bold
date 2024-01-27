@@ -115,7 +115,7 @@ const UserProfile = () => {
                             { color: isDarkMode ? "#fff" : "#333" },
                         ]}
                     >
-                        20%
+                        15%
                     </Text>
                 </View>
             </View>
